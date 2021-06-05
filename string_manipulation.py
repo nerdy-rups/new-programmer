@@ -12,4 +12,5 @@ print(string3.split(','))
 #whitespace trimming:
 print(string1.strip()+string2)
 
-#extract substring: perform action on the string ad if it's a list
+#extract substring: perform action on the string as if it's a list
+print (string2[2:-2])
