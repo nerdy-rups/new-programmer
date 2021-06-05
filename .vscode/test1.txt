@@ -1,0 +1,7 @@
+cat
+dog
+lion
+elephant
+monkey
+horse
+rabbit
