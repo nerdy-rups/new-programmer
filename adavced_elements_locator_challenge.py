@@ -69,4 +69,10 @@ child_element = adv.find_element_by_xpath("//a[normalize-space()='Reload']")
 MyActor.click(child_element).perform() #here normal driver class click could also be used, since the element is already on the dom.
 print("6 passed......")
 
+# 7. Hide-Show elements - Check first whether the element is present, then hide it, then check whether it's no more visible
+assert adv.find_element_by_css_selector("input[id='displayed-text']").is_displayed()
+adv.find_element_by_css_selector("input[id='hide-textbox']").click()
+assert not adv.find_element_by_css_selector("input[id='displayed-text']").is_displayed()
+print("7 passed.......")
+
 adv.close()
