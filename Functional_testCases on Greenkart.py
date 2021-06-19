@@ -29,8 +29,16 @@ assert veg_names_page2 == veg_names_page1
 print("First test case pass")
 
 
+#Test case 2 - Verify the sum of price of all items on the page is equal to the sum displayed as Total
+sum_of_items = 0
+for i in ftc.find_elements_by_xpath("//tbody/tr/td[5]"):
+    sum_of_items+=int(i.text)
+sum_displayed = ftc.find_element_by_xpath("//span[@class='totAmt']").text
+assert int(sum_displayed) == sum_of_items
+print("Second test case pass")
 
-#Test case 2 - Verify that the price after giving discount is less than the original price
+
+#Test case 3 - Verify that the price after giving discount is less than the original price
 price_before = int((ftc.find_element_by_css_selector("span.totAmt")).text)
 
 ftc.find_element_by_css_selector("input.promoCode").clear()
@@ -43,5 +51,5 @@ waiter.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "
 
 price_after = float(ftc.find_element_by_css_selector("span.discountAmt").text)
 assert price_after < price_before
-print("Second test case pass")
+print("Third test case pass")
 ftc.close()
