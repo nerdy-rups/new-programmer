@@ -7,7 +7,7 @@ class calculator():
     def summation(self, a, b):
         self.firstNumber = a
         self.secondNumber = b
-        return(self.firstNumber+self.secondNumber+self.num) #
+        return(self.firstNumber+self.secondNumber+self.num)
 
     def myself(self):
         return self
@@ -38,3 +38,12 @@ print(diffValue)
 
     
 #Whenever object is created, self gets called on all the instance variables that are defined in it as well as on any class variables. 
+
+
+# class can be used without creating objects of it also. 
+class myclass():
+    def __init__(self, a):
+        self.number = a
+        print(self.number)
+
+myclass(10)
