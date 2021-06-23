@@ -1,0 +1,7 @@
+Extra commmands after regular "py.test"
+
+-v: To run the test file in full verbose mode
+-s: To see the console logs of the running test
+specific file name after "py.test" command: To run only that test file
+-k "<any string that fully or partially matches one or more test cases>": To run only those specific test cases in the whole suite(folder) that have matching names
+-m <markname>: To run only those testcases across the suite(folder) that have the same marks(sanity, regression, etc)

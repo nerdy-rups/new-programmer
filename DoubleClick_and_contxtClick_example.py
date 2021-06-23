@@ -1,13 +1,15 @@
 import time
-from selenium import webdriver
+
 from selenium.webdriver import ActionChains
 
 # Double click - Double click on the element, open the alert and close it.
 DCCC = webdriver.Edge(executable_path='C:\drivers\edgedriver_win64\msedgedriver')
 DCCC.get("https://chercher.tech/practice/practice-pop-ups-selenium-webdriver")
+
 Actress = ActionChains(DCCC)
 Actress.move_to_element(DCCC.find_element_by_id("double-click")).perform()
 Actress.double_click().perform()
+
 new_alert = DCCC.switch_to.alert
 new_alert.accept()
 

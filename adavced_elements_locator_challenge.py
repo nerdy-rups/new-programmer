@@ -10,7 +10,7 @@ adv.get("https://www.rahulshettyacademy.com/AutomationPractice/")
 
 # 1. Dynamic dropdown - select value 'United States(US)' from the dynamic dropdown
 adv.find_element_by_css_selector("input[class='inputs ui-autocomplete-input']").send_keys("United")
-time.sleep(2)
+time.sleep(5)
 list_elements = adv.find_elements_by_css_selector("ul[id = 'ui-id-1'] li")
 for element in list_elements:
     if element.text == 'United States (USA)':
