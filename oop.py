@@ -7,7 +7,7 @@ class calculator():
     def summation(self, a, b):
         self.firstNumber = a
         self.secondNumber = b
-        return(self.firstNumber+self.secondNumber+self.num)
+        return(self.firstNumber+self.secondNumber+self.num) # class variable cannot be simply accessed by the method, it needs to be joined to the self instantiator or called with the class name
 
     def myself(self):
         return self
@@ -36,8 +36,7 @@ obj3 = calculator2(90,10)
 diffValue = obj3.subtraction()
 print(diffValue)
 
-    
-#Whenever object is created, self gets called on all the instance variables that are defined in it as well as on any class variables. 
+#Whenever object is created, self gets called on all the instance variables that are defined in it as well as on any class variables.
 
 
 # class can be used without creating objects of it also. 

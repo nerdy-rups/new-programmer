@@ -57,7 +57,7 @@ e2e_driver.find_element_by_xpath("//label[@for='checkbox2']").click()
 e2e_driver.find_element_by_xpath("//input[@value='Purchase']").click()
 waiter.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "div[class$='alert alert-success alert-dismissible'] strong")))
 if "Success" in e2e_driver.find_element_by_css_selector("div[class$='alert alert-success alert-dismissible'] strong").text:
-    print("test case pass. Item booked")
+    print("Test case pass. Item booked")
 e2e_driver.save_screenshot("test_image.png") # If the file already exists, it is overwritten
 e2e_driver.close()
 

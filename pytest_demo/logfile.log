@@ -1,0 +1,3 @@
+WARNING : 2021-06-25 00:10:41,263 : test_logging : This is warning level log 1
+ERROR : 2021-06-25 00:10:41,263 : test_logging : This is error level log 1
+CRITICAL : 2021-06-25 00:10:41,263 : test_logging : This is critical level log 1
