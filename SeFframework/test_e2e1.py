@@ -1,16 +1,20 @@
 import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import pytest
+from PageObjects.HomePage import HomePage
+from Utilities.BaseClass import baseClass
 
-from Sel_framework.Utilities.BaseClass import baseClass
 
 class TestOne(baseClass):
 
     def test_firstTestCase(self):
         # Adding item to cart:
-        self.myDriver.find_element_by_link_text("Shop").click()
+        #self.myDriver.find_element_by_link_text("Shop").click()
+        homepage = HomePage(self.myDriver)
+        homepage.shopLink()
         phones = self.myDriver.find_elements_by_xpath("//body//app-root//app-card")
         phone_selected = None
         price = None
@@ -36,8 +40,6 @@ class TestOne(baseClass):
             print("Test case pass. Same item present")
         if round(float(price_refined[1]) * 2601.04, 0) == round(float(price_in_checkout[1]), 0):
             print("Test case pass. Price matching")
-
-        # !! item count matching not done!!!!
 
         self.myDriver.find_element_by_css_selector("button[class='btn btn-success']").click()
 

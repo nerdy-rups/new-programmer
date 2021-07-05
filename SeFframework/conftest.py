@@ -4,8 +4,9 @@ from selenium import webdriver
 def pytest_addoption(parser):
     parser.addoption("--browserName", action = "store", default = "Chrome", help ="Enter the browser name")
 
+
 @pytest.fixture(scope="class")
-def Setup(request): # request is an isntance for the fixture that is auto built
+def Setup(request): # request is an instance for the fixture that is auto built
     SelectedBrowser = request.config.getoption("browserName")
     if SelectedBrowser == "Chrome":
         Driver = webdriver.Chrome(executable_path="C:\drivers\chromedriver_win32\chromedriver")
