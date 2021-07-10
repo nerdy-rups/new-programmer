@@ -3,32 +3,53 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.select import Select
 import pytest
 from PageObjects.HomePage import HomePage
+from PageObjects.ShopPage import ShopPage
 from Utilities.BaseClass import baseClass
 
-
+@pytest.mark.usefixtures("getData")
 class TestOne(baseClass):
 
-    def test_firstTestCase(self):
+    def test_firstTestCase(self, getData):
+        homepage1 = HomePage(self.myDriver)
+        #homepage1.name_entry().send_keys("Rupsha")
+        homepage1.name_entry().send_keys(getData[0])
+        #homepage1.email_entry().send_keys("rupsha@email.com")
+        homepage1.email_entry().send_keys(getData[1])
+        #homepage1.password_entry().send_keys("abcde")
+        homepage1.password_entry().send_keys(getData[2])
+        gender_options = homepage1.gender_select()
+        #gender_options.select_by_visible_text("Female")
+        gender_options.select_by_visible_text(getData[3])
+        homepage1.submit_click().click()
+
+        success_message = self.myDriver.find_element_by_xpath("//div[@class='alert alert-success alert-dismissible']").text
+        assert "Success" in success_message
+        self.myDriver.refresh()
+
+class TestTwo(baseClass): # <--- keeping this explicitly will cause the browser to close after execution of the first test and reopen for this one.
+    def test_secondTestCase(self):
         # Adding item to cart:
         #self.myDriver.find_element_by_link_text("Shop").click()
         homepage = HomePage(self.myDriver)
-        homepage.shopLink()
-        phones = self.myDriver.find_elements_by_xpath("//body//app-root//app-card")
-        phone_selected = None
+        homepage.shopLink().click()
+
+        shoppage = ShopPage(self.myDriver)
+        phones = shoppage.phone_area()
+        print (phones)
+        phone_selected = shoppage.phone_selection()
+        print(phone_selected)
         price = None
         for phone in phones:
             if phone.find_element_by_xpath("div/div[@class='card-body']/h4/a").text == 'Nokia Edge':
-                phone_selected = phone.find_element_by_xpath("div/div[@class='card-body']/h4/a").text
                 price = phone.find_element_by_xpath("div/div[@class='card-body']/h5").text
                 phone.find_element_by_xpath("div/div[@class='card-footer']/button").click()
                 print("Selected:", phone_selected, "priced", price)
                 price_refined = price.split('$')
         print(price_refined)
-
-        # Checkout:
-        self.myDriver.find_element_by_xpath("//a[@class='nav-link btn btn-primary']").click()
+        shoppage.click_checkout().click()
 
         # Checkout page:
         waiter = WebDriverWait(self.myDriver, 5)
@@ -60,7 +81,7 @@ class TestOne(baseClass):
         if "Success" in self.myDriver.find_element_by_css_selector(
                 "div[class$='alert alert-success alert-dismissible'] strong").text:
             print("Test case pass. Item booked")
-        self.myDriver.save_screenshot("test_image.png")  # If the file already exists, it is overwritten
+        self.myDriver.save_screenshot("test_image.png")
 
 
 

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../PYExcel_demo/.idea/PYExcel_demo.iml" filepath="$PROJECT_DIR$/../PYExcel_demo/.idea/PYExcel_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../SeFframework/.idea/Sel_framework.iml" filepath="$PROJECT_DIR$/../SeFframework/.idea/Sel_framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pytest_demo/.idea/pytest_demo.iml" filepath="$PROJECT_DIR$/../pytest_demo/.idea/pytest_demo.iml" />
     </modules>
   </component>
 </project>
